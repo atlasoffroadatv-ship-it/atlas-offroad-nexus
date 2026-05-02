@@ -14,16 +14,193 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      newsletter_subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          address: string
+          created_at: string
+          customer_name: string
+          email: string
+          id: string
+          items: Json
+          notes: string | null
+          phone: string
+          status: Database["public"]["Enums"]["order_status"]
+          total: number
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          customer_name: string
+          email: string
+          id?: string
+          items?: Json
+          notes?: string | null
+          phone: string
+          status?: Database["public"]["Enums"]["order_status"]
+          total?: number
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          customer_name?: string
+          email?: string
+          id?: string
+          items?: Json
+          notes?: string | null
+          phone?: string
+          status?: Database["public"]["Enums"]["order_status"]
+          total?: number
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          brand: string
+          created_at: string
+          description: string | null
+          id: string
+          images: string[]
+          is_available: boolean
+          is_featured: boolean
+          name: string
+          price: number
+          short_description: string | null
+          slug: string
+          specs: Json
+          stock: number
+          type: Database["public"]["Enums"]["atv_type"]
+          updated_at: string
+        }
+        Insert: {
+          brand: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          images?: string[]
+          is_available?: boolean
+          is_featured?: boolean
+          name: string
+          price?: number
+          short_description?: string | null
+          slug: string
+          specs?: Json
+          stock?: number
+          type?: Database["public"]["Enums"]["atv_type"]
+          updated_at?: string
+        }
+        Update: {
+          brand?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          images?: string[]
+          is_available?: boolean
+          is_featured?: boolean
+          name?: string
+          price?: number
+          short_description?: string | null
+          slug?: string
+          specs?: Json
+          stock?: number
+          type?: Database["public"]["Enums"]["atv_type"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          author_name: string
+          avatar_url: string | null
+          body: string
+          created_at: string
+          id: string
+          product_id: string
+          rating: number
+        }
+        Insert: {
+          author_name: string
+          avatar_url?: string | null
+          body: string
+          created_at?: string
+          id?: string
+          product_id: string
+          rating?: number
+        }
+        Update: {
+          author_name?: string
+          avatar_url?: string | null
+          body?: string
+          created_at?: string
+          id?: string
+          product_id?: string
+          rating?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
+      atv_type: "sport" | "utility" | "youth" | "side_by_side"
+      order_status: "pending" | "contacted" | "completed" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +327,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+      atv_type: ["sport", "utility", "youth", "side_by_side"],
+      order_status: ["pending", "contacted", "completed", "cancelled"],
+    },
   },
 } as const
