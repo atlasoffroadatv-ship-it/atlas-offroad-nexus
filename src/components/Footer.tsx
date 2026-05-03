@@ -59,20 +59,22 @@ export default function Footer() {
 
         <div>
           <h4 className="font-display text-lg tracking-wider mb-4">Explore</h4>
-          <ul className="space-y-2 text-sm text-muted-foreground">
+          <ul className="space-y-2 text-sm text-foreground/80">
             <li><Link to="/shop" className="hover:text-foreground">Shop ATVs</Link></li>
+            <li><Link to="/reviews" className="hover:text-foreground">Reviews</Link></li>
+            <li><Link to="/financing" className="hover:text-foreground">Financing</Link></li>
+            <li><Link to="/blog" className="hover:text-foreground">Blog</Link></li>
             <li><Link to="/about" className="hover:text-foreground">About Us</Link></li>
             <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
-            <li><Link to="/cart" className="hover:text-foreground">Cart</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-display text-lg tracking-wider mb-4">Contact</h4>
-          <ul className="space-y-3 text-sm text-muted-foreground">
+          <ul className="space-y-3 text-sm text-foreground/80">
             <li className="flex items-start gap-2"><Mail className="h-4 w-4 mt-0.5 text-gold" /> info@atlasoffroadatv.com</li>
-            <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-gold" /> +1 (555) 010-2024</li>
-            <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-gold" /> 1200 Trailhead Blvd, Moab UT</li>
+            <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-gold" /> +1 (512) 555-0188</li>
+            <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-gold" /> 1200 Trailhead Blvd, Austin, TX 78701</li>
           </ul>
           <div className="mt-6 flex gap-3">
             {[{ I: Instagram, h: "https://instagram.com" }, { I: Facebook, h: "https://facebook.com" }, { I: Youtube, h: "https://youtube.com" }].map(({ I, h }, i) => (
