@@ -13,7 +13,19 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['"Bebas Neue"', 'Inter', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          soft: "hsl(var(--gold-soft))",
+        },
+        ember: {
+          DEFAULT: "hsl(var(--ember))",
+          soft: "hsl(var(--ember-soft))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
