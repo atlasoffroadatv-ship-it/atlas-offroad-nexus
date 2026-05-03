@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import Seo from "@/components/Seo";
 import { Minus, Plus, Trash2 } from "lucide-react";
+import CheckoutModal from "@/components/CheckoutModal";
 
 export default function Cart() {
-  const { items, setQty, remove, total, count } = useCart();
+  const { items, setQty, remove, total, count, clear } = useCart();
+  const [open, setOpen] = useState(false);
   return (
     <>
       <Seo title="Your Cart" description="Review your selected ATVs." path="/cart" noindex />
@@ -12,7 +15,7 @@ export default function Cart() {
         <h1 className="font-display text-5xl md:text-6xl tracking-wider mb-10">Your cart</h1>
         {items.length === 0 ? (
           <div className="glass rounded-2xl p-16 text-center">
-            <p className="text-muted-foreground">Your cart is empty.</p>
+            <p className="text-foreground/85">Your cart is empty.</p>
             <Link to="/shop" className="mt-6 inline-block h-12 px-8 rounded-full bg-gradient-premium text-primary-foreground font-semibold uppercase tracking-widest text-sm">Browse ATVs</Link>
           </div>
         ) : (
@@ -37,20 +40,26 @@ export default function Cart() {
               ))}
             </div>
             <aside className="glass rounded-2xl p-6 h-fit lg:sticky lg:top-28">
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">Order summary</div>
-              <div className="mt-4 flex justify-between text-sm"><span className="text-muted-foreground">Items</span><span>{count}</span></div>
-              <div className="mt-2 flex justify-between text-sm"><span className="text-muted-foreground">Subtotal</span><span>${total.toLocaleString()}</span></div>
-              <div className="mt-2 flex justify-between text-sm"><span className="text-muted-foreground">Delivery</span><span className="text-gold">Quote at checkout</span></div>
+              <div className="text-xs uppercase tracking-widest text-foreground/70">Order summary</div>
+              <div className="mt-4 flex justify-between text-sm"><span className="text-foreground/70">Items</span><span>{count}</span></div>
+              <div className="mt-2 flex justify-between text-sm"><span className="text-foreground/70">Subtotal</span><span>${total.toLocaleString()}</span></div>
+              <div className="mt-2 flex justify-between text-sm"><span className="text-foreground/70">Delivery</span><span className="text-gold">Quote at checkout</span></div>
               <div className="border-t border-white/5 mt-4 pt-4 flex justify-between text-2xl font-semibold">
                 <span>Total</span><span className="text-gradient">${total.toLocaleString()}</span>
               </div>
-              <Link to="/checkout" className="mt-6 w-full h-12 rounded-full bg-gradient-premium text-primary-foreground font-semibold uppercase tracking-widest text-sm inline-flex items-center justify-center">
+              <button onClick={() => setOpen(true)} className="mt-6 w-full h-12 rounded-full bg-gradient-premium text-primary-foreground font-semibold uppercase tracking-widest text-sm">
                 Checkout
-              </Link>
+              </button>
             </aside>
           </div>
         )}
       </section>
+      <CheckoutModal
+        open={open}
+        onClose={() => setOpen(false)}
+        items={items.map((i) => ({ id: i.id, slug: i.slug, name: i.name, price: i.price, qty: i.qty, image: i.image }))}
+        onSuccess={clear}
+      />
     </>
   );
 }
