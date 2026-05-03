@@ -49,7 +49,7 @@ export default function Contact() {
     <>
       <Seo
         title="Contact Atlas Offroad ATV"
-        description="Get in touch with Atlas Offroad ATV. Book a test ride, ask about financing, or visit our showroom in Moab, UT."
+        description="Get in touch with Atlas Offroad ATV. Book a test ride, ask about financing, or visit our flagship showroom in Austin, TX."
         path="/contact"
       />
 
@@ -100,28 +100,28 @@ export default function Contact() {
             <div className="glass rounded-2xl p-6 flex gap-4 items-start">
               <Mail className="h-6 w-6 text-gold flex-shrink-0" />
               <div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">Email</div>
+                <div className="text-xs uppercase tracking-widest text-foreground/70">Email</div>
                 <a href="mailto:info@atlasoffroadatv.com" className="text-lg hover:text-gradient">info@atlasoffroadatv.com</a>
               </div>
             </div>
             <div className="glass rounded-2xl p-6 flex gap-4 items-start">
               <Phone className="h-6 w-6 text-gold flex-shrink-0" />
               <div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">Phone</div>
-                <a href="tel:+15550102024" className="text-lg hover:text-gradient">+1 (555) 010-2024</a>
+                <div className="text-xs uppercase tracking-widest text-foreground/70">Phone</div>
+                <a href="tel:+15125550188" className="text-lg hover:text-gradient">+1 (512) 555-0188</a>
               </div>
             </div>
             <div className="glass rounded-2xl p-6 flex gap-4 items-start">
               <MapPin className="h-6 w-6 text-gold flex-shrink-0" />
               <div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">Showroom</div>
-                <div className="text-lg">1200 Trailhead Blvd, Moab, UT 84532</div>
+                <div className="text-xs uppercase tracking-widest text-foreground/70">Flagship showroom</div>
+                <div className="text-lg">1200 Trailhead Blvd, Austin, TX 78701</div>
               </div>
             </div>
             <div className="glass rounded-2xl p-2 overflow-hidden">
               <iframe
                 title="Atlas Offroad showroom map"
-                src="https://www.google.com/maps?q=Moab%2C+UT&output=embed"
+                src="https://www.google.com/maps?q=Austin%2C+TX&output=embed"
                 loading="lazy"
                 className="w-full h-72 rounded-xl"
               />
