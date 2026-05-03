@@ -27,7 +27,8 @@ export default function AdminProducts() {
 
   const toggle = useMutation({
     mutationFn: async ({ id, key, value }: { id: string; key: "is_featured" | "is_available"; value: boolean }) => {
-      const { error } = await supabase.from("products").update({ [key]: value }).eq("id", id);
+      const patch = key === "is_featured" ? { is_featured: value } : { is_available: value };
+      const { error } = await supabase.from("products").update(patch).eq("id", id);
       if (error) throw error;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["admin-products"] }),
