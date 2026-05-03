@@ -24,14 +24,14 @@ export default function ProductCard({ p, index = 0 }: { p: Product; index?: numb
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent" />
           {p.is_featured && (
             <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest px-2 py-1 rounded bg-gradient-premium text-primary-foreground font-bold">
               Featured
             </span>
           )}
           {!p.is_available && (
-            <span className="absolute top-3 right-3 text-[10px] uppercase tracking-widest px-2 py-1 rounded bg-black/70 border border-white/10">
+            <span className="absolute top-3 right-3 text-[10px] uppercase tracking-widest px-2 py-1 rounded bg-foreground/85 text-background border border-border">
               Sold out
             </span>
           )}

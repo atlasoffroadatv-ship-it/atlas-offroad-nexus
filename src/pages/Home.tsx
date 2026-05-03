@@ -46,8 +46,8 @@ export default function Home() {
           className="absolute inset-0 h-full w-full object-cover"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
 
         <div className="container relative z-10 max-w-3xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -117,12 +117,12 @@ export default function Home() {
             { t: "Side-by-Sides", d: "Family-ready", img: "https://images.unsplash.com/photo-1532635241-17e820acc59f?auto=format&fit=crop&w=800&q=70" },
             { t: "Youth", d: "Safer firsts", img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=70" },
           ].map((c) => (
-            <Link key={c.t} to="/shop" className="group relative overflow-hidden rounded-2xl aspect-[4/5] hover-lift">
+            <Link key={c.t} to="/shop" className="group relative overflow-hidden rounded-2xl aspect-[4/5] hover-lift block">
               <img src={c.img} alt={c.t} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-5 text-white">
                 <div className="font-display text-2xl tracking-wider">{c.t}</div>
-                <div className="text-xs text-gold uppercase tracking-widest mt-1">{c.d} →</div>
+                <div className="text-xs text-gold-soft uppercase tracking-widest mt-1">{c.d} →</div>
               </div>
             </Link>
           ))}
@@ -197,7 +197,7 @@ export default function Home() {
           </div>
           <div className="relative grid grid-cols-3 gap-3">
             {[{ n: "$199", l: "from / month" }, { n: "5.99%", l: "APR from" }, { n: "84 mo", l: "max term" }].map((s) => (
-              <div key={s.l} className="rounded-2xl bg-background/60 border border-white/10 p-5 text-center">
+              <div key={s.l} className="rounded-2xl bg-background border border-border p-5 text-center">
                 <div className="font-display text-2xl text-gradient">{s.n}</div>
                 <div className="text-[10px] uppercase tracking-widest text-foreground/70 mt-1">{s.l}</div>
               </div>

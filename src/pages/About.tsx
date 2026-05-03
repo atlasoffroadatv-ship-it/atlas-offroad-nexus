@@ -13,7 +13,7 @@ export default function About() {
 
       <section className="relative h-[60vh] flex items-end overflow-hidden grain">
         <img src={about} alt="ATVs racing on a forest trail" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/30" />
         <div className="container relative pb-12">
           <div className="text-xs uppercase tracking-[0.3em] text-gold">Our story</div>
           <h1 className="font-display text-6xl md:text-8xl tracking-wider mt-2">Born of the trail.</h1>
