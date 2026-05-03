@@ -93,7 +93,7 @@ export default function CheckoutModal({ open, onClose, items, onSuccess }: Props
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fade-in-fast">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
       <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-card border border-gold/20 shadow-glow">
-        <div className="sticky top-0 z-10 flex items-center justify-between p-6 border-b border-white/10 bg-card">
+        <div className="sticky top-0 z-10 flex items-center justify-between p-6 border-b border-border bg-card">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-gold">Secure checkout</div>
             <h2 className="font-display text-3xl tracking-wider mt-1">Complete your order</h2>
@@ -119,7 +119,7 @@ export default function CheckoutModal({ open, onClose, items, onSuccess }: Props
                   type={f.t}
                   maxLength={f.max}
                   required
-                  className="mt-2 w-full h-12 rounded-md bg-background border border-white/10 px-4 text-sm text-foreground focus:border-gold/60 outline-none"
+                  className="mt-2 w-full h-12 rounded-md bg-background border border-border px-4 text-sm text-foreground focus:border-gold/60 outline-none"
                 />
               </div>
             ))}
@@ -130,7 +130,7 @@ export default function CheckoutModal({ open, onClose, items, onSuccess }: Props
                 rows={3}
                 maxLength={500}
                 placeholder="Color preference, financing interest, delivery instructions…"
-                className="mt-2 w-full rounded-md bg-background border border-white/10 px-4 py-3 text-sm text-foreground focus:border-gold/60 outline-none"
+                className="mt-2 w-full rounded-md bg-background border border-border px-4 py-3 text-sm text-foreground focus:border-gold/60 outline-none"
               />
             </div>
             <button
@@ -144,7 +144,7 @@ export default function CheckoutModal({ open, onClose, items, onSuccess }: Props
             </p>
           </form>
 
-          <aside className="rounded-xl bg-background/60 border border-white/10 p-5 h-fit space-y-4">
+          <aside className="rounded-xl bg-background border border-border p-5 h-fit space-y-4">
             <div className="text-xs uppercase tracking-widest text-foreground/70">Your order</div>
             {items.length === 0 && <div className="text-sm text-foreground/60">No items</div>}
             {items.map((i) => (
@@ -157,7 +157,7 @@ export default function CheckoutModal({ open, onClose, items, onSuccess }: Props
                 <div className="text-sm text-gold font-semibold">${(i.price * i.qty).toLocaleString()}</div>
               </div>
             ))}
-            <div className="border-t border-white/10 pt-3 flex justify-between text-lg font-semibold">
+            <div className="border-t border-border pt-3 flex justify-between text-lg font-semibold">
               <span>Total</span><span className="text-gradient">${total.toLocaleString()}</span>
             </div>
           </aside>

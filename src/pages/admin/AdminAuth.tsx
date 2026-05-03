@@ -47,11 +47,11 @@ export default function AdminAuth() {
           <div className="space-y-4">
             <div>
               <label className="text-xs uppercase tracking-widest text-foreground/70">Email</label>
-              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required maxLength={255} className="mt-2 w-full h-12 rounded-md bg-background border border-white/10 px-4 text-sm text-foreground focus:border-gold/60 outline-none" />
+              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required maxLength={255} className="mt-2 w-full h-12 rounded-md bg-background border border-border px-4 text-sm text-foreground focus:border-gold/60 outline-none" />
             </div>
             <div>
               <label className="text-xs uppercase tracking-widest text-foreground/70">Password</label>
-              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" required minLength={6} className="mt-2 w-full h-12 rounded-md bg-background border border-white/10 px-4 text-sm text-foreground focus:border-gold/60 outline-none" />
+              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" required minLength={6} className="mt-2 w-full h-12 rounded-md bg-background border border-border px-4 text-sm text-foreground focus:border-gold/60 outline-none" />
             </div>
             <button disabled={busy} className="w-full h-12 rounded-full bg-gradient-premium text-primary-foreground font-semibold uppercase tracking-widest text-sm disabled:opacity-60">
               {busy ? "…" : "Sign in"}

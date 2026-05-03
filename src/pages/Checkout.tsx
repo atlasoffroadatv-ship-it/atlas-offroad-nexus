@@ -89,12 +89,12 @@ export default function Checkout() {
             ].map((f) => (
               <div key={f.n}>
                 <label className="text-xs uppercase tracking-widest text-muted-foreground">{f.l}</label>
-                <input name={f.n} type={f.t} maxLength={f.max} required className="mt-2 w-full h-12 rounded-md bg-background/40 border border-white/10 px-4 text-sm focus:border-gold/40 outline-none" />
+                <input name={f.n} type={f.t} maxLength={f.max} required className="mt-2 w-full h-12 rounded-md bg-background border border-border px-4 text-sm focus:border-gold/40 outline-none" />
               </div>
             ))}
             <div>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">Notes (optional)</label>
-              <textarea name="notes" rows={3} maxLength={500} className="mt-2 w-full rounded-md bg-background/40 border border-white/10 px-4 py-3 text-sm focus:border-gold/40 outline-none" />
+              <textarea name="notes" rows={3} maxLength={500} className="mt-2 w-full rounded-md bg-background border border-border px-4 py-3 text-sm focus:border-gold/40 outline-none" />
             </div>
             <button disabled={loading} className="w-full h-12 rounded-full bg-gradient-premium text-primary-foreground font-semibold uppercase tracking-widest text-sm disabled:opacity-60">
               {loading ? "Submitting…" : "Place order"}
@@ -109,7 +109,7 @@ export default function Checkout() {
                 <span>${(i.price * i.qty).toLocaleString()}</span>
               </div>
             ))}
-            <div className="border-t border-white/5 pt-3 flex justify-between text-xl font-semibold">
+            <div className="border-t border-border pt-3 flex justify-between text-xl font-semibold">
               <span>Total</span><span className="text-gradient">${total.toLocaleString()}</span>
             </div>
           </aside>

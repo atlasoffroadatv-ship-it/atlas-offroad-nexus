@@ -44,7 +44,7 @@ export default function Cart() {
               <div className="mt-4 flex justify-between text-sm"><span className="text-foreground/70">Items</span><span>{count}</span></div>
               <div className="mt-2 flex justify-between text-sm"><span className="text-foreground/70">Subtotal</span><span>${total.toLocaleString()}</span></div>
               <div className="mt-2 flex justify-between text-sm"><span className="text-foreground/70">Delivery</span><span className="text-gold">Quote at checkout</span></div>
-              <div className="border-t border-white/5 mt-4 pt-4 flex justify-between text-2xl font-semibold">
+              <div className="border-t border-border mt-4 pt-4 flex justify-between text-2xl font-semibold">
                 <span>Total</span><span className="text-gradient">${total.toLocaleString()}</span>
               </div>
               <button onClick={() => setOpen(true)} className="mt-6 w-full h-12 rounded-full bg-gradient-premium text-primary-foreground font-semibold uppercase tracking-widest text-sm">

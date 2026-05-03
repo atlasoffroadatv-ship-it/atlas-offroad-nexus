@@ -42,12 +42,12 @@ export default function AdminOrders() {
                 </div>
                 <div className="text-right">
                   <div className="text-2xl font-semibold text-gradient">${Number(o.total).toLocaleString()}</div>
-                  <select value={o.status} onChange={(e) => update.mutate({ id: o.id, status: e.target.value as Status })} className="mt-2 h-9 rounded-md bg-background/40 border border-white/10 px-3 text-xs">
+                  <select value={o.status} onChange={(e) => update.mutate({ id: o.id, status: e.target.value as Status })} className="mt-2 h-9 rounded-md bg-background border border-border px-3 text-xs">
                     {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
                   </select>
                 </div>
               </div>
-              <div className="mt-4 border-t border-white/5 pt-4 text-sm">
+              <div className="mt-4 border-t border-border pt-4 text-sm">
                 {(o.items as any[]).map((it, i) => (
                   <div key={i} className="flex justify-between">
                     <span>{it.qty}× {it.name}</span>

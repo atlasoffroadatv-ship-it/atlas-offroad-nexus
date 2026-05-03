@@ -74,7 +74,7 @@ export default function Contact() {
                   type={f.type}
                   maxLength={f.max}
                   required
-                  className="mt-2 w-full h-12 rounded-md bg-background/40 border border-white/10 px-4 text-sm focus:border-gold/40 outline-none"
+                  className="mt-2 w-full h-12 rounded-md bg-background border border-border px-4 text-sm focus:border-gold/40 outline-none"
                 />
               </div>
             ))}
@@ -85,7 +85,7 @@ export default function Contact() {
                 required
                 rows={5}
                 maxLength={1000}
-                className="mt-2 w-full rounded-md bg-background/40 border border-white/10 px-4 py-3 text-sm focus:border-gold/40 outline-none"
+                className="mt-2 w-full rounded-md bg-background border border-border px-4 py-3 text-sm focus:border-gold/40 outline-none"
               />
             </div>
             <button

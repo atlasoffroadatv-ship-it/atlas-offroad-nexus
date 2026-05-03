@@ -63,7 +63,7 @@ export default function AdminProducts() {
             </thead>
             <tbody>
               {products.map((p) => (
-                <tr key={p.id} className="border-t border-white/5">
+                <tr key={p.id} className="border-t border-border">
                   <td className="p-4 font-medium">{p.name}</td>
                   <td className="p-4 text-muted-foreground">{p.brand}</td>
                   <td className="p-4 text-muted-foreground">{p.type.replace("_", " ")}</td>
@@ -154,7 +154,7 @@ function ProductEditor({ draft, onClose, onSaved }: { draft: Partial<Product>; o
 
   return (
     <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur p-4 flex items-start justify-center overflow-y-auto">
-      <div className="bg-card rounded-2xl border border-white/10 w-full max-w-3xl p-8 my-8">
+      <div className="bg-card rounded-2xl border border-border w-full max-w-3xl p-8 my-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="font-display text-3xl tracking-wider">{form.id ? "Edit ATV" : "New ATV"}</h2>
           <button onClick={onClose} className="h-9 w-9 rounded-full glass flex items-center justify-center"><X className="h-4 w-4" /></button>
@@ -168,32 +168,32 @@ function ProductEditor({ draft, onClose, onSaved }: { draft: Partial<Product>; o
           ].map(({ k, l, t }) => (
             <div key={k}>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">{l}</label>
-              <input type={t} value={(form as any)[k] ?? ""} onChange={(e) => update(k as any, t === "number" ? Number(e.target.value) : e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background/40 border border-white/10 px-3 text-sm" />
+              <input type={t} value={(form as any)[k] ?? ""} onChange={(e) => update(k as any, t === "number" ? Number(e.target.value) : e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm" />
             </div>
           ))}
           <div>
             <label className="text-xs uppercase tracking-widest text-muted-foreground">Type</label>
-            <select value={form.type as string} onChange={(e) => update("type", e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background/40 border border-white/10 px-3 text-sm">
+            <select value={form.type as string} onChange={(e) => update("type", e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm">
               {TYPES.map((t) => <option key={t} value={t}>{t.replace("_", " ")}</option>)}
             </select>
           </div>
           <div>
             <label className="text-xs uppercase tracking-widest text-muted-foreground">Slug (optional)</label>
-            <input value={form.slug ?? ""} onChange={(e) => update("slug", e.target.value)} placeholder="auto from name" className="mt-1 w-full h-11 rounded-md bg-background/40 border border-white/10 px-3 text-sm" />
+            <input value={form.slug ?? ""} onChange={(e) => update("slug", e.target.value)} placeholder="auto from name" className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm" />
           </div>
         </div>
 
         <div className="mt-4">
           <label className="text-xs uppercase tracking-widest text-muted-foreground">Short description</label>
-          <input value={form.short_description ?? ""} onChange={(e) => update("short_description", e.target.value)} maxLength={200} className="mt-1 w-full h-11 rounded-md bg-background/40 border border-white/10 px-3 text-sm" />
+          <input value={form.short_description ?? ""} onChange={(e) => update("short_description", e.target.value)} maxLength={200} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm" />
         </div>
         <div className="mt-4">
           <label className="text-xs uppercase tracking-widest text-muted-foreground">Description</label>
-          <textarea value={form.description ?? ""} onChange={(e) => update("description", e.target.value)} rows={4} className="mt-1 w-full rounded-md bg-background/40 border border-white/10 px-3 py-2 text-sm" />
+          <textarea value={form.description ?? ""} onChange={(e) => update("description", e.target.value)} rows={4} className="mt-1 w-full rounded-md bg-background border border-border px-3 py-2 text-sm" />
         </div>
         <div className="mt-4">
           <label className="text-xs uppercase tracking-widest text-muted-foreground">Specs (one per line, "key: value")</label>
-          <textarea value={specsText} onChange={(e) => setSpecsText(e.target.value)} rows={5} placeholder="engine: 850cc V-twin&#10;horsepower: 92 hp&#10;weight: 720 lb" className="mt-1 w-full rounded-md bg-background/40 border border-white/10 px-3 py-2 text-sm font-mono" />
+          <textarea value={specsText} onChange={(e) => setSpecsText(e.target.value)} rows={5} placeholder="engine: 850cc V-twin&#10;horsepower: 92 hp&#10;weight: 720 lb" className="mt-1 w-full rounded-md bg-background border border-border px-3 py-2 text-sm font-mono" />
         </div>
 
         <div className="mt-4">
@@ -207,7 +207,7 @@ function ProductEditor({ draft, onClose, onSaved }: { draft: Partial<Product>; o
                 </button>
               </div>
             ))}
-            <label className="aspect-square rounded-md border-2 border-dashed border-white/10 flex flex-col items-center justify-center text-xs text-muted-foreground cursor-pointer hover:border-gold/40">
+            <label className="aspect-square rounded-md border-2 border-dashed border-border flex flex-col items-center justify-center text-xs text-muted-foreground cursor-pointer hover:border-gold/40">
               <Upload className="h-5 w-5 mb-1" /> Upload
               <input type="file" accept="image/*" multiple onChange={(e) => upload(e.target.files)} className="hidden" />
             </label>

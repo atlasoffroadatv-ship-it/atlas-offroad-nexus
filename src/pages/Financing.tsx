@@ -117,12 +117,12 @@ export default function Financing() {
             ].map((f) => (
               <div key={f.n}>
                 <label className="text-xs uppercase tracking-widest text-foreground/70">{f.l}</label>
-                <input name={f.n} type={f.t} maxLength={f.max} required className="mt-2 w-full h-12 rounded-md bg-background border border-white/10 px-4 text-sm text-foreground focus:border-gold/60 outline-none" />
+                <input name={f.n} type={f.t} maxLength={f.max} required className="mt-2 w-full h-12 rounded-md bg-background border border-border px-4 text-sm text-foreground focus:border-gold/60 outline-none" />
               </div>
             ))}
             <div>
               <label className="text-xs uppercase tracking-widest text-foreground/70">Estimated credit</label>
-              <select name="credit" required className="mt-2 w-full h-12 rounded-md bg-background border border-white/10 px-4 text-sm text-foreground focus:border-gold/60 outline-none">
+              <select name="credit" required className="mt-2 w-full h-12 rounded-md bg-background border border-border px-4 text-sm text-foreground focus:border-gold/60 outline-none">
                 <option value="excellent">Excellent (720+)</option>
                 <option value="good">Good (660-719)</option>
                 <option value="fair">Fair (600-659)</option>

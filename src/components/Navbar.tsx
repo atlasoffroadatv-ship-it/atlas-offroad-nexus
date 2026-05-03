@@ -82,7 +82,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="lg:hidden border-t border-white/10 nav-solid animate-fade-in-fast">
+        <div className="lg:hidden border-t border-border nav-solid animate-fade-in-fast">
           <div className="container py-6 flex flex-col gap-4">
             {links.map((l) => (
               <NavLink

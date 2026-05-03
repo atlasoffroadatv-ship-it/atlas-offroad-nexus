@@ -64,7 +64,7 @@ export default function Shop() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search…"
-              className="w-full h-11 rounded-md bg-background/40 border border-white/5 px-4 text-sm outline-none focus:border-gold/40 mb-6"
+              className="w-full h-11 rounded-md bg-background border border-border px-4 text-sm outline-none focus:border-gold/40 mb-6"
             />
             <div className="mb-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Type</div>
@@ -74,7 +74,7 @@ export default function Shop() {
                     key={t.value}
                     onClick={() => setType(t.value)}
                     className={`text-xs px-3 py-1.5 rounded-full border transition ${
-                      type === t.value ? "bg-gradient-premium text-primary-foreground border-transparent" : "border-white/10 text-muted-foreground hover:border-gold/40"
+                      type === t.value ? "bg-gradient-premium text-primary-foreground border-transparent" : "border-border text-muted-foreground hover:border-gold/40"
                     }`}
                   >
                     {t.label}
@@ -85,7 +85,7 @@ export default function Shop() {
             {brands.length > 0 && (
               <div className="mb-6">
                 <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Brand</div>
-                <select value={brand} onChange={(e) => setBrand(e.target.value)} className="w-full h-10 rounded-md bg-background/40 border border-white/5 px-3 text-sm">
+                <select value={brand} onChange={(e) => setBrand(e.target.value)} className="w-full h-10 rounded-md bg-background border border-border px-3 text-sm">
                   <option value="all">All brands</option>
                   {brands.map((b) => <option key={b} value={b}>{b}</option>)}
                 </select>
@@ -99,7 +99,7 @@ export default function Shop() {
             </div>
             <div>
               <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Sort</div>
-              <select value={sort} onChange={(e) => setSort(e.target.value as any)} className="w-full h-10 rounded-md bg-background/40 border border-white/5 px-3 text-sm">
+              <select value={sort} onChange={(e) => setSort(e.target.value as any)} className="w-full h-10 rounded-md bg-background border border-border px-3 text-sm">
                 <option value="newest">Newest</option>
                 <option value="price_asc">Price: low to high</option>
                 <option value="price_desc">Price: high to low</option>

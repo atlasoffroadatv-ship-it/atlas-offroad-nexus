@@ -25,7 +25,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative mt-32 border-t border-white/5">
+    <footer className="relative mt-32 border-t border-border">
       <div className="container py-20 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <Link to="/" className="flex items-center gap-3">
@@ -85,7 +85,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/5">
+      <div className="border-t border-border">
         <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} Atlas Offroad ATV. All rights reserved.</div>
           <div className="flex gap-4">

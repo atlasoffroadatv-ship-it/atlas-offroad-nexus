@@ -197,7 +197,7 @@ export default function Home() {
           </div>
           <div className="relative grid grid-cols-3 gap-3">
             {[{ n: "$199", l: "from / month" }, { n: "5.99%", l: "APR from" }, { n: "84 mo", l: "max term" }].map((s) => (
-              <div key={s.l} className="rounded-2xl bg-background/60 border border-white/10 p-5 text-center">
+              <div key={s.l} className="rounded-2xl bg-background border border-border p-5 text-center">
                 <div className="font-display text-2xl text-gradient">{s.n}</div>
                 <div className="text-[10px] uppercase tracking-widest text-foreground/70 mt-1">{s.l}</div>
               </div>
