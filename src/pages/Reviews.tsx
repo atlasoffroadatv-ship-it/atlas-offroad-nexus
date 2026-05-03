@@ -47,7 +47,7 @@ function generateReviews(products: ProductLite[]) {
       name: NAMES[i % NAMES.length],
       state: STATES[i % STATES.length],
       rating: tpl.rating,
-      body: tpl.body.replaceAll("{name}", product.name),
+      body: tpl.body.split("{name}").join(product.name),
       gender: i % 3 === 0 ? "women" : "men",
       num: ((i * 7) % 90) + 1,
     });
