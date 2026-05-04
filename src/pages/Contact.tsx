@@ -49,7 +49,7 @@ export default function Contact() {
     <>
       <Seo
         title="Contact Atlas Offroad ATV"
-        description="Get in touch with Atlas Offroad ATV. Book a test ride, ask about financing, or visit our flagship showroom in Austin, TX."
+        description="Get in touch with Atlas Offroad ATV. Book a test ride, ask about financing, or chat with a US-based ATV specialist."
         path="/contact"
       />
 
