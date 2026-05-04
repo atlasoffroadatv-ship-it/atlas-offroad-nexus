@@ -114,17 +114,9 @@ export default function Contact() {
             <div className="glass rounded-2xl p-6 flex gap-4 items-start">
               <MapPin className="h-6 w-6 text-gold flex-shrink-0" />
               <div>
-                <div className="text-xs uppercase tracking-widest text-foreground/70">Flagship showroom</div>
-                <div className="text-lg">1200 Trailhead Blvd, Austin, TX 78701</div>
+                <div className="text-xs uppercase tracking-widest text-foreground/70">Service area</div>
+                <div className="text-lg">United States — door-to-trail delivery in all 50 states</div>
               </div>
-            </div>
-            <div className="glass rounded-2xl p-2 overflow-hidden">
-              <iframe
-                title="Atlas Offroad showroom map"
-                src="https://www.google.com/maps?q=Austin%2C+TX&output=embed"
-                loading="lazy"
-                className="w-full h-72 rounded-xl"
-              />
             </div>
           </div>
         </div>
