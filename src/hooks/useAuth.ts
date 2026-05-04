@@ -22,7 +22,7 @@ export function useAuth() {
         .from("user_roles")
         .insert({ user_id: currentUser.id, role: "admin" });
 
-      return !error;
+      return !error || error.code === "23505";
     };
 
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
