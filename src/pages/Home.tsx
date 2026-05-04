@@ -3,13 +3,28 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import {
   ChevronRight, Shield, Wrench, Award, Truck,
-  MapPin, Phone, Mail, CheckCircle2, Star, Zap, Compass, Users, BadgeCheck, Gauge, Calendar, ArrowRight, HelpCircle,
+  Phone, Mail, BadgeCheck, Star, Zap, Compass, Users, Gauge, Calendar, ArrowRight, HelpCircle,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import Seo, { orgJsonLd } from "@/components/Seo";
 import ProductCard from "@/components/ProductCard";
+import Typewriter from "@/components/Typewriter";
 import hero from "@/assets/hero-atv.jpg";
+
+const IMG = {
+  sport: "https://cdn-fastly.atv.com/media/2022/10/24/8847148/sport-atv-of-the-year-atv-com-awards.jpg?size=1200x628",
+  utility: "https://powersportsbusiness.com/wp-content/uploads/2012/07/912ATV-KYMCO-MXU-700.jpg",
+  sxs: "https://can-am.brp.com/content/dam/global/en/can-am-off-road/my26/studio/na/ssv/defender/ORV-SSV-MY26-Defender-Base-HD7-Compass-Green-0006XTE00-Studio-34FR-NA.png",
+  youth: "https://cdpcdn.dx1app.com/products-private/prod/9d91fa61-ab9c-4d46-adce-236fc0cb1154/6c6e1d8b-2105-4698-8264-aaee01435c22/00000000-0000-0000-0000-000000000000/4a2617dd-f8d0-45ac-b454-add201107d6d/2000000001.jpg",
+  safety: "https://www.yamaha-motor.eu/content/dam/yamaha-motor-europe-migrated/safety/atv-rider-training/atv-riders-safety-awareness-kv.jpg",
+  lineup: "https://motorsportsnewswire.com/wp-content/uploads/2025/09/2026-Yamaha-ATV-lineup-678.jpeg",
+  action: "https://hhvehicleservices.co.uk/wp-content/uploads/2020/02/2026-Yamaha-YFM700FWAD-X-EU-Moss_Grey___Tactical_Black-Action-007-03.jpeg",
+  detail1: "https://cdpcdn.dx1app.com/products-private/prod/b4c552ab-68a4-448e-b7a2-5d67c5e1b912/4c47232e-f696-4cab-b372-86abfea52e53/00000000-0000-0000-0000-000000000000/34e71fad-d7c0-4e4f-907e-b3550030f22b/f9a3ddc6-b4dd-43ae-a3eb-b3c00151b796/6000000006.jpg",
+  detail2: "https://cdpcdn.dx1app.com/products-private/prod/aea64e15-6d59-49ae-a6a2-c820ffc90d04/635b0992-9f4d-4cb4-a654-ae1c01512427/00000000-0000-0000-0000-000000000000/34e71fad-d7c0-4e4f-907e-b3550030f22b/a83f09e9-3581-4e58-8941-b38d01712595/6000000001_480px.jpg",
+  trail: "https://cdn.dealerspike.com/imglib/v1/640x480/imglib/assets/inventory/31/18/3118C4A5-B11E-4820-8B21-8CC21B2BC54D.jpg",
+  hero2: "https://cdn-media.tilabs.io/v1/media/69ebadaa9468fa64150df9c2.jpg",
+};
 
 const features = [
   { I: Shield, t: "Lifetime support", d: "Every Atlas comes with white-glove care." },
@@ -56,7 +71,9 @@ export default function Home() {
             </div>
             <h1 className="mt-6 font-display text-6xl md:text-8xl tracking-wider leading-[0.95]">
               Conquer<br />
-              <span className="text-gradient">every horizon.</span>
+              <span className="text-gradient">
+                <Typewriter words={["every horizon.", "every trail.", "every mountain.", "every dune."]} />
+              </span>
             </h1>
             <p className="mt-6 text-lg text-foreground/90 max-w-xl">
               Hand-curated ATVs, sport quads, and side-by-sides from the world's most trusted manufacturers — delivered with concierge precision across the United States.
@@ -112,10 +129,10 @@ export default function Home() {
         <SectionHeader eyebrow="Browse by category" title="Find your machine" />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
           {[
-            { t: "Sport ATVs", d: "Race-bred power", img: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=70" },
-            { t: "Utility ATVs", d: "Built to work", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=70" },
-            { t: "Side-by-Sides", d: "Family-ready", img: "https://images.unsplash.com/photo-1532635241-17e820acc59f?auto=format&fit=crop&w=800&q=70" },
-            { t: "Youth", d: "Safer firsts", img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=70" },
+            { t: "Sport ATVs", d: "Race-bred power", img: IMG.sport },
+            { t: "Utility ATVs", d: "Built to work", img: IMG.utility },
+            { t: "Side-by-Sides", d: "Family-ready", img: IMG.sxs },
+            { t: "Youth", d: "Safer firsts", img: IMG.youth },
           ].map((c) => (
             <Link key={c.t} to="/shop" className="group relative overflow-hidden rounded-2xl aspect-[4/5] hover-lift block">
               <img src={c.img} alt={c.t} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition group-hover:scale-110" />
@@ -232,9 +249,9 @@ export default function Home() {
         <SectionHeader eyebrow="Field notes" title="From the Atlas Journal" cta={<Link to="/blog" className="text-sm uppercase tracking-widest text-gold hover:text-ember">All articles →</Link>} />
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           {[
-            { slug: "best-atvs-for-beginners-2026", t: "The 7 Best Beginner ATVs of 2026", img: "https://images.unsplash.com/photo-1553949345-eb786bb3f7ba?auto=format&fit=crop&w=900&q=70", date: "May 1, 2026" },
-            { slug: "moab-trail-guide", t: "Moab to Sedona: Ultimate Trail Guide", img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=70", date: "Apr 22, 2026" },
-            { slug: "atv-financing-101", t: "ATV Financing 101 — A Buyer's Playbook", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=70", date: "Feb 26, 2026" },
+            { slug: "best-atvs-for-beginners-2026", t: "The 7 Best Beginner ATVs of 2026", img: IMG.lineup, date: "May 1, 2026" },
+            { slug: "moab-trail-guide", t: "Moab to Sedona: Ultimate Trail Guide", img: IMG.trail, date: "Apr 22, 2026" },
+            { slug: "atv-financing-101", t: "ATV Financing 101 — A Buyer's Playbook", img: IMG.detail1, date: "Feb 26, 2026" },
           ].map((p) => (
             <Link key={p.slug} to="/blog" className="group glass rounded-2xl overflow-hidden hover-lift">
               <div className="aspect-[16/10] overflow-hidden"><img src={p.img} alt={p.t} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" /></div>
@@ -252,27 +269,39 @@ export default function Home() {
         <SectionHeader eyebrow="Brands we carry" title="Best-in-class only" />
         <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
           {["Atlas", "Polaris", "Yamaha", "Honda", "Can-Am", "Kawasaki"].map((b) => (
-            <div key={b} className="glass rounded-2xl h-24 flex items-center justify-center font-display text-2xl tracking-widest text-gradient">{b}</div>
+            <div
+              key={b}
+              className="glass rounded-2xl h-24 flex items-center justify-center font-display text-2xl tracking-widest text-foreground border-2 border-transparent hover:border-gold/60 hover:text-gold transition-all hover-lift"
+            >
+              {b}
+            </div>
           ))}
         </div>
       </section>
 
-      {/* 9. SHOWROOMS */}
+      {/* 9. NATIONWIDE COVERAGE */}
       <section className="container py-20">
-        <SectionHeader eyebrow="US showrooms" title="Visit us in person" />
-        <div className="grid md:grid-cols-3 gap-6 mt-12">
-          {[
-            { c: "Austin, TX", a: "1200 Trailhead Blvd, Austin, TX 78701", p: "+1 (512) 555-0188" },
-            { c: "Denver, CO", a: "455 Summit Ridge, Denver, CO 80202", p: "+1 (303) 555-0142" },
-            { c: "Phoenix, AZ", a: "920 Sonoran Way, Phoenix, AZ 85004", p: "+1 (602) 555-0177" },
-          ].map((s) => (
-            <div key={s.c} className="glass rounded-2xl p-6 hover-lift">
-              <div className="font-display text-2xl tracking-wider">{s.c}</div>
-              <div className="mt-3 flex items-start gap-2 text-sm text-foreground/85"><MapPin className="h-4 w-4 mt-0.5 text-gold" /> {s.a}</div>
-              <div className="mt-2 flex items-start gap-2 text-sm text-foreground/85"><Phone className="h-4 w-4 mt-0.5 text-gold" /> {s.p}</div>
-              <Link to="/contact" className="mt-4 inline-block text-xs uppercase tracking-widest text-gold hover:text-ember">Book a visit →</Link>
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="rounded-3xl overflow-hidden shadow-card">
+            <img src={IMG.action} alt="ATV in action across the United States" loading="lazy" className="w-full h-[460px] object-cover" />
+          </motion.div>
+          <div>
+            <SectionHeader eyebrow="Nationwide" title="Built for the United States" align="left" />
+            <p className="mt-6 text-foreground/85">
+              From the Rockies to the Appalachians, from coastal dunes to desert flats — Atlas delivers concierge ATV service door-to-trail in all 50 states. No regional dealers. No middlemen. Just one premium brand, one direct line.
+            </p>
+            <div className="mt-6 grid grid-cols-3 gap-3">
+              {[{ n: "50", l: "States" }, { n: "24h", l: "Avg response" }, { n: "100%", l: "Insured ship" }].map((s) => (
+                <div key={s.l} className="glass rounded-2xl p-5 text-center">
+                  <div className="font-display text-3xl text-gradient">{s.n}</div>
+                  <div className="text-[10px] uppercase tracking-widest text-foreground/70 mt-1">{s.l}</div>
+                </div>
+              ))}
             </div>
-          ))}
+            <Link to="/contact" className="mt-8 inline-flex items-center gap-2 h-12 px-7 rounded-full bg-gradient-premium text-primary-foreground font-semibold uppercase tracking-widest text-sm">
+              Talk to a specialist <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

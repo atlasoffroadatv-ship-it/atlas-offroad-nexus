@@ -74,7 +74,7 @@ export default function Footer() {
           <ul className="space-y-3 text-sm text-foreground/80">
             <li className="flex items-start gap-2"><Mail className="h-4 w-4 mt-0.5 text-gold" /> info@atlasoffroadatv.com</li>
             <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-gold" /> +1 (512) 555-0188</li>
-            <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-gold" /> 1200 Trailhead Blvd, Austin, TX 78701</li>
+            <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-gold" /> United States — nationwide delivery</li>
           </ul>
           <div className="mt-6 flex gap-3">
             {[{ I: Instagram, h: "https://instagram.com" }, { I: Facebook, h: "https://facebook.com" }, { I: Youtube, h: "https://youtube.com" }].map(({ I, h }, i) => (

@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ScrollToTop from "@/components/ScrollToTop";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -17,6 +18,7 @@ import CheckoutSuccess from "./pages/CheckoutSuccess";
 import NotFound from "./pages/NotFound";
 import Reviews from "./pages/Reviews";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Financing from "./pages/Financing";
 import AdminAuth from "./pages/admin/AdminAuth";
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -34,6 +36,7 @@ const App = () => (
         <Sonner />
         <CartProvider>
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/admin/auth" element={<SiteLayout><AdminAuth /></SiteLayout>} />
               <Route path="/admin" element={<AdminLayout />}>
@@ -47,6 +50,7 @@ const App = () => (
               <Route path="/about" element={<SiteLayout><About /></SiteLayout>} />
               <Route path="/reviews" element={<SiteLayout><Reviews /></SiteLayout>} />
               <Route path="/blog" element={<SiteLayout><Blog /></SiteLayout>} />
+              <Route path="/blog/:slug" element={<SiteLayout><BlogPost /></SiteLayout>} />
               <Route path="/financing" element={<SiteLayout><Financing /></SiteLayout>} />
               <Route path="/contact" element={<SiteLayout><Contact /></SiteLayout>} />
               <Route path="/cart" element={<SiteLayout><Cart /></SiteLayout>} />

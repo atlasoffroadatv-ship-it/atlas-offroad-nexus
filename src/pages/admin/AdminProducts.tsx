@@ -61,7 +61,8 @@ export default function AdminProducts() {
         <div className="glass rounded-2xl p-12 text-center text-muted-foreground">No products yet. Add your first ATV.</div>
       ) : (
         <div className="glass rounded-2xl overflow-hidden">
-          <table className="w-full text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[640px]">
             <thead className="text-xs uppercase tracking-widest text-muted-foreground">
               <tr><th className="text-left p-4">Name</th><th className="text-left p-4">Brand</th><th className="text-left p-4">Type</th><th className="text-left p-4">Price</th><th className="p-4">Featured</th><th className="p-4">Available</th><th className="p-4"></th></tr>
             </thead>
@@ -90,6 +91,7 @@ export default function AdminProducts() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
