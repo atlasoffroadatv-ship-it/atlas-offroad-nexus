@@ -25,11 +25,6 @@ const IMG = {
   trail: "https://cdn.dealerspike.com/imglib/v1/640x480/imglib/assets/inventory/31/18/3118C4A5-B11E-4820-8B21-8CC21B2BC54D.jpg",
   hero2: "https://cdn-media.tilabs.io/v1/media/69ebadaa9468fa64150df9c2.jpg",
 };
-import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import Seo, { orgJsonLd } from "@/components/Seo";
-import ProductCard from "@/components/ProductCard";
-import hero from "@/assets/hero-atv.jpg";
 
 const features = [
   { I: Shield, t: "Lifetime support", d: "Every Atlas comes with white-glove care." },
