@@ -7,8 +7,12 @@ import { Database } from "@/integrations/supabase/types";
 
 type Product = Database["public"]["Tables"]["products"]["Row"];
 type AtvType = Database["public"]["Enums"]["atv_type"];
+type Condition = Database["public"]["Enums"]["atv_condition"];
+type ListingStatus = Database["public"]["Enums"]["listing_status"];
 
 const TYPES: AtvType[] = ["sport", "utility", "side_by_side", "youth"];
+const CONDITIONS: Condition[] = ["new", "used", "certified_pre_owned"];
+const STATUSES: ListingStatus[] = ["available", "reserved", "sold"];
 
 const slugify = (s: string) =>
   s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -46,7 +50,7 @@ export default function AdminProducts() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-display text-4xl tracking-wider">Products</h1>
-        <button onClick={() => setEditing({ name: "", brand: "", type: "sport", price: 0, stock: 1, is_available: true, is_featured: false, images: [], specs: {} } as any)} className="h-11 px-5 rounded-full bg-gradient-premium text-primary-foreground text-sm uppercase tracking-widest font-semibold inline-flex items-center gap-2">
+        <button onClick={() => setEditing({ name: "", brand: "", model: "", year: new Date().getFullYear(), type: "sport", condition: "new", listing_status: "available", price: 0, stock: 1, is_available: true, is_featured: false, images: [], specs: {} } as any)} className="h-11 px-5 rounded-full bg-gradient-premium text-primary-foreground text-sm uppercase tracking-widest font-semibold inline-flex items-center gap-2">
           <Plus className="h-4 w-4" /> Add ATV
         </button>
       </div>
@@ -126,14 +130,22 @@ function ProductEditor({ draft, onClose, onSaved }: { draft: Partial<Product>; o
         name: form.name!,
         slug,
         brand: form.brand!,
+        model: form.model || null,
+        year: form.year ? Number(form.year) : null,
         type: (form.type || "sport") as AtvType,
+        condition: (form.condition || "new") as Condition,
+        listing_status: (form.listing_status || "available") as ListingStatus,
+        mileage: form.mileage != null && form.mileage !== ("" as any) ? Number(form.mileage) : null,
+        engine_size: form.engine_size || null,
+        transmission: form.transmission || null,
+        color: form.color || null,
         price: Number(form.price) || 0,
         short_description: form.short_description || null,
         description: form.description || null,
         specs,
         images: form.images || [],
         stock: Number(form.stock) || 0,
-        is_available: !!form.is_available,
+        is_available: (form.listing_status || "available") === "available",
         is_featured: !!form.is_featured,
       };
       if (form.id) {
@@ -161,20 +173,38 @@ function ProductEditor({ draft, onClose, onSaved }: { draft: Partial<Product>; o
         </div>
         <div className="grid md:grid-cols-2 gap-4">
           {[
-            { k: "name", l: "Name", t: "text" },
+            { k: "name", l: "Title", t: "text" },
             { k: "brand", l: "Brand", t: "text" },
+            { k: "model", l: "Model", t: "text" },
+            { k: "year", l: "Year", t: "number" },
             { k: "price", l: "Price (USD)", t: "number" },
+            { k: "mileage", l: "Mileage (mi)", t: "number" },
+            { k: "engine_size", l: "Engine size", t: "text" },
+            { k: "transmission", l: "Transmission", t: "text" },
+            { k: "color", l: "Color", t: "text" },
             { k: "stock", l: "Stock", t: "number" },
           ].map(({ k, l, t }) => (
             <div key={k}>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">{l}</label>
-              <input type={t} value={(form as any)[k] ?? ""} onChange={(e) => update(k as any, t === "number" ? Number(e.target.value) : e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm" />
+              <input type={t} value={(form as any)[k] ?? ""} onChange={(e) => update(k as any, t === "number" ? (e.target.value === "" ? null : Number(e.target.value)) : e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm" />
             </div>
           ))}
           <div>
             <label className="text-xs uppercase tracking-widest text-muted-foreground">Type</label>
             <select value={form.type as string} onChange={(e) => update("type", e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm">
               {TYPES.map((t) => <option key={t} value={t}>{t.replace("_", " ")}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="text-xs uppercase tracking-widest text-muted-foreground">Condition</label>
+            <select value={(form.condition as string) || "new"} onChange={(e) => update("condition", e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm">
+              {CONDITIONS.map((c) => <option key={c} value={c}>{c.replace("_", " ")}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="text-xs uppercase tracking-widest text-muted-foreground">Status</label>
+            <select value={(form.listing_status as string) || "available"} onChange={(e) => update("listing_status", e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm">
+              {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
           <div>
@@ -215,7 +245,7 @@ function ProductEditor({ draft, onClose, onSaved }: { draft: Partial<Product>; o
         </div>
 
         <div className="mt-6 flex gap-6">
-          <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={!!form.is_available} onChange={(e) => update("is_available", e.target.checked)} className="accent-[hsl(var(--gold))]" /> Available</label>
+          
           <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={!!form.is_featured} onChange={(e) => update("is_featured", e.target.checked)} className="accent-[hsl(var(--gold))]" /> Featured</label>
         </div>
 

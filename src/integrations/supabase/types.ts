@@ -74,54 +74,78 @@ export type Database = {
       products: {
         Row: {
           brand: string
+          color: string | null
+          condition: Database["public"]["Enums"]["atv_condition"]
           created_at: string
           description: string | null
+          engine_size: string | null
           id: string
           images: string[]
           is_available: boolean
           is_featured: boolean
+          listing_status: Database["public"]["Enums"]["listing_status"]
+          mileage: number | null
+          model: string | null
           name: string
           price: number
           short_description: string | null
           slug: string
           specs: Json
           stock: number
+          transmission: string | null
           type: Database["public"]["Enums"]["atv_type"]
           updated_at: string
+          year: number | null
         }
         Insert: {
           brand: string
+          color?: string | null
+          condition?: Database["public"]["Enums"]["atv_condition"]
           created_at?: string
           description?: string | null
+          engine_size?: string | null
           id?: string
           images?: string[]
           is_available?: boolean
           is_featured?: boolean
+          listing_status?: Database["public"]["Enums"]["listing_status"]
+          mileage?: number | null
+          model?: string | null
           name: string
           price?: number
           short_description?: string | null
           slug: string
           specs?: Json
           stock?: number
+          transmission?: string | null
           type?: Database["public"]["Enums"]["atv_type"]
           updated_at?: string
+          year?: number | null
         }
         Update: {
           brand?: string
+          color?: string | null
+          condition?: Database["public"]["Enums"]["atv_condition"]
           created_at?: string
           description?: string | null
+          engine_size?: string | null
           id?: string
           images?: string[]
           is_available?: boolean
           is_featured?: boolean
+          listing_status?: Database["public"]["Enums"]["listing_status"]
+          mileage?: number | null
+          model?: string | null
           name?: string
           price?: number
           short_description?: string | null
           slug?: string
           specs?: Json
           stock?: number
+          transmission?: string | null
           type?: Database["public"]["Enums"]["atv_type"]
           updated_at?: string
+          year?: number | null
         }
         Relationships: []
       }
@@ -199,7 +223,9 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      atv_condition: "new" | "used" | "certified_pre_owned"
       atv_type: "sport" | "utility" | "youth" | "side_by_side"
+      listing_status: "available" | "reserved" | "sold"
       order_status: "pending" | "contacted" | "completed" | "cancelled"
     }
     CompositeTypes: {
@@ -329,7 +355,9 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      atv_condition: ["new", "used", "certified_pre_owned"],
       atv_type: ["sport", "utility", "youth", "side_by_side"],
+      listing_status: ["available", "reserved", "sold"],
       order_status: ["pending", "contacted", "completed", "cancelled"],
     },
   },
