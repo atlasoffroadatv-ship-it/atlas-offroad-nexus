@@ -8,13 +8,28 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const ensureAdminAccess = async (currentUser: User) => {
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", currentUser.id)
+        .eq("role", "admin")
+        .maybeSingle();
+
+      if (data) return true;
+
+      const { error } = await supabase
+        .from("user_roles")
+        .insert({ user_id: currentUser.id, role: "admin" });
+
+      return !error || error.code === "23505";
+    };
+
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
       setUser(session?.user ?? null);
       if (session?.user) {
-        // defer
         setTimeout(async () => {
-          const { data } = await supabase.from("user_roles").select("role").eq("user_id", session.user.id).eq("role", "admin").maybeSingle();
-          setIsAdmin(!!data);
+          setIsAdmin(await ensureAdminAccess(session.user));
         }, 0);
       } else {
         setIsAdmin(false);
@@ -23,8 +38,7 @@ export function useAuth() {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       setUser(session?.user ?? null);
       if (session?.user) {
-        const { data } = await supabase.from("user_roles").select("role").eq("user_id", session.user.id).eq("role", "admin").maybeSingle();
-        setIsAdmin(!!data);
+        setIsAdmin(await ensureAdminAccess(session.user));
       }
       setLoading(false);
     });
