@@ -18,6 +18,7 @@ import CheckoutSuccess from "./pages/CheckoutSuccess";
 import NotFound from "./pages/NotFound";
 import Reviews from "./pages/Reviews";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Financing from "./pages/Financing";
 import AdminAuth from "./pages/admin/AdminAuth";
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -49,6 +50,7 @@ const App = () => (
               <Route path="/about" element={<SiteLayout><About /></SiteLayout>} />
               <Route path="/reviews" element={<SiteLayout><Reviews /></SiteLayout>} />
               <Route path="/blog" element={<SiteLayout><Blog /></SiteLayout>} />
+              <Route path="/blog/:slug" element={<SiteLayout><BlogPost /></SiteLayout>} />
               <Route path="/financing" element={<SiteLayout><Financing /></SiteLayout>} />
               <Route path="/contact" element={<SiteLayout><Contact /></SiteLayout>} />
               <Route path="/cart" element={<SiteLayout><Cart /></SiteLayout>} />
