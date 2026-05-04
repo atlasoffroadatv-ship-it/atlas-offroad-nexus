@@ -245,7 +245,7 @@ function ProductEditor({ draft, onClose, onSaved }: { draft: Partial<Product>; o
         </div>
 
         <div className="mt-6 flex gap-6">
-          <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={!!form.is_available} onChange={(e) => update("is_available", e.target.checked)} className="accent-[hsl(var(--gold))]" /> Available</label>
+          
           <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={!!form.is_featured} onChange={(e) => update("is_featured", e.target.checked)} className="accent-[hsl(var(--gold))]" /> Featured</label>
         </div>
 
