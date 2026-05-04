@@ -50,7 +50,7 @@ export default function AdminProducts() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-display text-4xl tracking-wider">Products</h1>
-        <button onClick={() => setEditing({ name: "", brand: "", type: "sport", price: 0, stock: 1, is_available: true, is_featured: false, images: [], specs: {} } as any)} className="h-11 px-5 rounded-full bg-gradient-premium text-primary-foreground text-sm uppercase tracking-widest font-semibold inline-flex items-center gap-2">
+        <button onClick={() => setEditing({ name: "", brand: "", model: "", year: new Date().getFullYear(), type: "sport", condition: "new", listing_status: "available", price: 0, stock: 1, is_available: true, is_featured: false, images: [], specs: {} } as any)} className="h-11 px-5 rounded-full bg-gradient-premium text-primary-foreground text-sm uppercase tracking-widest font-semibold inline-flex items-center gap-2">
           <Plus className="h-4 w-4" /> Add ATV
         </button>
       </div>
