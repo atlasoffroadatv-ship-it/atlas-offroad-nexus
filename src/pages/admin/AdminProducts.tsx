@@ -173,20 +173,38 @@ function ProductEditor({ draft, onClose, onSaved }: { draft: Partial<Product>; o
         </div>
         <div className="grid md:grid-cols-2 gap-4">
           {[
-            { k: "name", l: "Name", t: "text" },
+            { k: "name", l: "Title", t: "text" },
             { k: "brand", l: "Brand", t: "text" },
+            { k: "model", l: "Model", t: "text" },
+            { k: "year", l: "Year", t: "number" },
             { k: "price", l: "Price (USD)", t: "number" },
+            { k: "mileage", l: "Mileage (mi)", t: "number" },
+            { k: "engine_size", l: "Engine size", t: "text" },
+            { k: "transmission", l: "Transmission", t: "text" },
+            { k: "color", l: "Color", t: "text" },
             { k: "stock", l: "Stock", t: "number" },
           ].map(({ k, l, t }) => (
             <div key={k}>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">{l}</label>
-              <input type={t} value={(form as any)[k] ?? ""} onChange={(e) => update(k as any, t === "number" ? Number(e.target.value) : e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm" />
+              <input type={t} value={(form as any)[k] ?? ""} onChange={(e) => update(k as any, t === "number" ? (e.target.value === "" ? null : Number(e.target.value)) : e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm" />
             </div>
           ))}
           <div>
             <label className="text-xs uppercase tracking-widest text-muted-foreground">Type</label>
             <select value={form.type as string} onChange={(e) => update("type", e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm">
               {TYPES.map((t) => <option key={t} value={t}>{t.replace("_", " ")}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="text-xs uppercase tracking-widest text-muted-foreground">Condition</label>
+            <select value={(form.condition as string) || "new"} onChange={(e) => update("condition", e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm">
+              {CONDITIONS.map((c) => <option key={c} value={c}>{c.replace("_", " ")}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="text-xs uppercase tracking-widest text-muted-foreground">Status</label>
+            <select value={(form.listing_status as string) || "available"} onChange={(e) => update("listing_status", e.target.value)} className="mt-1 w-full h-11 rounded-md bg-background border border-border px-3 text-sm">
+              {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
           <div>
