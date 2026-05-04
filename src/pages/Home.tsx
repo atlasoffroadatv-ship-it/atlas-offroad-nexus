@@ -249,9 +249,9 @@ export default function Home() {
         <SectionHeader eyebrow="Field notes" title="From the Atlas Journal" cta={<Link to="/blog" className="text-sm uppercase tracking-widest text-gold hover:text-ember">All articles →</Link>} />
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           {[
-            { slug: "best-atvs-for-beginners-2026", t: "The 7 Best Beginner ATVs of 2026", img: "https://images.unsplash.com/photo-1553949345-eb786bb3f7ba?auto=format&fit=crop&w=900&q=70", date: "May 1, 2026" },
-            { slug: "moab-trail-guide", t: "Moab to Sedona: Ultimate Trail Guide", img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=70", date: "Apr 22, 2026" },
-            { slug: "atv-financing-101", t: "ATV Financing 101 — A Buyer's Playbook", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=70", date: "Feb 26, 2026" },
+            { slug: "best-atvs-for-beginners-2026", t: "The 7 Best Beginner ATVs of 2026", img: IMG.lineup, date: "May 1, 2026" },
+            { slug: "moab-trail-guide", t: "Moab to Sedona: Ultimate Trail Guide", img: IMG.trail, date: "Apr 22, 2026" },
+            { slug: "atv-financing-101", t: "ATV Financing 101 — A Buyer's Playbook", img: IMG.detail1, date: "Feb 26, 2026" },
           ].map((p) => (
             <Link key={p.slug} to="/blog" className="group glass rounded-2xl overflow-hidden hover-lift">
               <div className="aspect-[16/10] overflow-hidden"><img src={p.img} alt={p.t} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" /></div>
@@ -269,27 +269,39 @@ export default function Home() {
         <SectionHeader eyebrow="Brands we carry" title="Best-in-class only" />
         <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
           {["Atlas", "Polaris", "Yamaha", "Honda", "Can-Am", "Kawasaki"].map((b) => (
-            <div key={b} className="glass rounded-2xl h-24 flex items-center justify-center font-display text-2xl tracking-widest text-gradient">{b}</div>
+            <div
+              key={b}
+              className="glass rounded-2xl h-24 flex items-center justify-center font-display text-2xl tracking-widest text-foreground border-2 border-transparent hover:border-gold/60 hover:text-gold transition-all hover-lift"
+            >
+              {b}
+            </div>
           ))}
         </div>
       </section>
 
-      {/* 9. SHOWROOMS */}
+      {/* 9. NATIONWIDE COVERAGE */}
       <section className="container py-20">
-        <SectionHeader eyebrow="US showrooms" title="Visit us in person" />
-        <div className="grid md:grid-cols-3 gap-6 mt-12">
-          {[
-            { c: "Austin, TX", a: "1200 Trailhead Blvd, Austin, TX 78701", p: "+1 (512) 555-0188" },
-            { c: "Denver, CO", a: "455 Summit Ridge, Denver, CO 80202", p: "+1 (303) 555-0142" },
-            { c: "Phoenix, AZ", a: "920 Sonoran Way, Phoenix, AZ 85004", p: "+1 (602) 555-0177" },
-          ].map((s) => (
-            <div key={s.c} className="glass rounded-2xl p-6 hover-lift">
-              <div className="font-display text-2xl tracking-wider">{s.c}</div>
-              <div className="mt-3 flex items-start gap-2 text-sm text-foreground/85"><MapPin className="h-4 w-4 mt-0.5 text-gold" /> {s.a}</div>
-              <div className="mt-2 flex items-start gap-2 text-sm text-foreground/85"><Phone className="h-4 w-4 mt-0.5 text-gold" /> {s.p}</div>
-              <Link to="/contact" className="mt-4 inline-block text-xs uppercase tracking-widest text-gold hover:text-ember">Book a visit →</Link>
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="rounded-3xl overflow-hidden shadow-card">
+            <img src={IMG.action} alt="ATV in action across the United States" loading="lazy" className="w-full h-[460px] object-cover" />
+          </motion.div>
+          <div>
+            <SectionHeader eyebrow="Nationwide" title="Built for the United States" align="left" />
+            <p className="mt-6 text-foreground/85">
+              From the Rockies to the Appalachians, from coastal dunes to desert flats — Atlas delivers concierge ATV service door-to-trail in all 50 states. No regional dealers. No middlemen. Just one premium brand, one direct line.
+            </p>
+            <div className="mt-6 grid grid-cols-3 gap-3">
+              {[{ n: "50", l: "States" }, { n: "24h", l: "Avg response" }, { n: "100%", l: "Insured ship" }].map((s) => (
+                <div key={s.l} className="glass rounded-2xl p-5 text-center">
+                  <div className="font-display text-3xl text-gradient">{s.n}</div>
+                  <div className="text-[10px] uppercase tracking-widest text-foreground/70 mt-1">{s.l}</div>
+                </div>
+              ))}
             </div>
-          ))}
+            <Link to="/contact" className="mt-8 inline-flex items-center gap-2 h-12 px-7 rounded-full bg-gradient-premium text-primary-foreground font-semibold uppercase tracking-widest text-sm">
+              Talk to a specialist <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
