@@ -7,8 +7,12 @@ import { Database } from "@/integrations/supabase/types";
 
 type Product = Database["public"]["Tables"]["products"]["Row"];
 type AtvType = Database["public"]["Enums"]["atv_type"];
+type Condition = Database["public"]["Enums"]["atv_condition"];
+type ListingStatus = Database["public"]["Enums"]["listing_status"];
 
 const TYPES: AtvType[] = ["sport", "utility", "side_by_side", "youth"];
+const CONDITIONS: Condition[] = ["new", "used", "certified_pre_owned"];
+const STATUSES: ListingStatus[] = ["available", "reserved", "sold"];
 
 const slugify = (s: string) =>
   s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
