@@ -108,7 +108,7 @@ export default function Contact() {
               <Phone className="h-6 w-6 text-gold flex-shrink-0" />
               <div>
                 <div className="text-xs uppercase tracking-widest text-foreground/70">Phone</div>
-                <a href="tel:+15125550188" className="text-lg hover:text-gradient">+1 (512) 555-0188</a>
+                <a href="tel:+16094030679" className="text-lg hover:text-gradient">+1 (609) 403-0679</a>
               </div>
             </div>
             <div className="glass rounded-2xl p-6 flex gap-4 items-start">

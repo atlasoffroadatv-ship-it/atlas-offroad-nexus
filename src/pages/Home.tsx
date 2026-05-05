@@ -322,7 +322,7 @@ export default function Home() {
               <Link to="/contact" className="h-12 px-8 rounded-full glass font-semibold uppercase tracking-widest text-sm inline-flex items-center">Get in touch</Link>
             </div>
             <div className="mt-8 inline-flex flex-wrap justify-center gap-6 text-sm text-foreground/85">
-              <a href="tel:+15125550188" className="inline-flex items-center gap-2 hover:text-gold"><Phone className="h-4 w-4 text-gold" /> +1 (512) 555-0188</a>
+              <a href="tel:+16094030679" className="inline-flex items-center gap-2 hover:text-gold"><Phone className="h-4 w-4 text-gold" /> +1 (609) 403-0679</a>
               <a href="mailto:info@atlasoffroadatv.com" className="inline-flex items-center gap-2 hover:text-gold"><Mail className="h-4 w-4 text-gold" /> info@atlasoffroadatv.com</a>
             </div>
           </div>
