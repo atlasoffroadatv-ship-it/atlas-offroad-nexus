@@ -48,7 +48,7 @@ export const POSTS: BlogPost[] = [
     excerpt: "Mile-by-mile breakdown of the most cinematic offroad routes in the American Southwest, plus permits and seasonal tips.",
     date: "April 22, 2026",
     tag: "Trail guides",
-    img: IMG.trail,
+    img: "https://cardosystems.com/cdn/shop/articles/ATV-vs-Quad-vs-4-Wheeler.jpg",
     readTime: "12 min read",
     author: "Trail Crew",
     content: [

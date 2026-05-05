@@ -73,7 +73,7 @@ export default function Footer() {
           <h4 className="font-display text-lg tracking-wider mb-4">Contact</h4>
           <ul className="space-y-3 text-sm text-foreground/80">
             <li className="flex items-start gap-2"><Mail className="h-4 w-4 mt-0.5 text-gold" /> info@atlasoffroadatv.com</li>
-            <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-gold" /> +1 (512) 555-0188</li>
+            <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-gold" /> +1 (609) 403-0679</li>
             <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-gold" /> United States — nationwide delivery</li>
           </ul>
           <div className="mt-6 flex gap-3">
