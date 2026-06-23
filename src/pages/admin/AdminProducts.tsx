@@ -21,6 +21,7 @@ const slugify = (s: string) =>
 export default function AdminProducts() {
   const qc = useQueryClient();
   const [editing, setEditing] = useState<Partial<Product> | null>(null);
+  const [search, setSearch] = useState("");
 
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["admin-products"],
@@ -29,6 +30,16 @@ export default function AdminProducts() {
       return data || [];
     },
   });
+
+  const filtered = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    if (!q) return products;
+    return products.filter((p) =>
+      p.name.toLowerCase().includes(q) ||
+      p.brand.toLowerCase().includes(q) ||
+      (p.model || "").toLowerCase().includes(q)
+    );
+  }, [products, search]);
 
   const toggle = useMutation({
     mutationFn: async ({ id, key, value }: { id: string; key: "is_featured" | "is_available"; value: boolean }) => {
