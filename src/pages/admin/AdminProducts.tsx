@@ -67,10 +67,21 @@ export default function AdminProducts() {
         </button>
       </div>
 
+      <div className="relative mb-6">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search by name, brand, or model..."
+          className="w-full h-11 rounded-md bg-background border border-border pl-10 pr-4 text-sm"
+        />
+      </div>
+
       {isLoading ? (
         <div className="text-muted-foreground">Loading…</div>
-      ) : products.length === 0 ? (
-        <div className="glass rounded-2xl p-12 text-center text-muted-foreground">No products yet. Add your first ATV.</div>
+      ) : filtered.length === 0 ? (
+        <div className="glass rounded-2xl p-12 text-center text-muted-foreground">{search ? "No products match your search." : "No products yet. Add your first ATV."}</div>
       ) : (
         <div className="glass rounded-2xl overflow-hidden">
           <div className="overflow-x-auto">
@@ -79,7 +90,7 @@ export default function AdminProducts() {
               <tr><th className="text-left p-4">Name</th><th className="text-left p-4">Brand</th><th className="text-left p-4">Type</th><th className="text-left p-4">Price</th><th className="p-4">Featured</th><th className="p-4">Available</th><th className="p-4"></th></tr>
             </thead>
             <tbody>
-              {products.map((p) => (
+              {filtered.map((p) => (
                 <tr key={p.id} className="border-t border-border">
                   <td className="p-4 font-medium">{p.name}</td>
                   <td className="p-4 text-muted-foreground">{p.brand}</td>
